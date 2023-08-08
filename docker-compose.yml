@@ -1,0 +1,20 @@
+version: '3'
+services:
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app/target:/app/target
+    networks:
+      - spring-network
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+
+networks:
+  spring-network:
+
